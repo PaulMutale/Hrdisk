@@ -1,0 +1,169 @@
+<?php
+
+namespace App\Http\Controllers\Admin;
+
+use App\{Employee,Overtime};
+use Illuminate\Http\Request;
+use App\Http\Controllers\Controller;
+use App\Http\Requests\OvertimeRequest;
+use DataTables;
+use Auth;
+
+class OvertimeController extends Controller
+{
+    // Check if the principle has completed the KYC
+    public function __construct()
+    {
+        $this->middleware('hasKYCBeenDone?', ['except' => 'admin.KYC.index']);
+    }
+    
+    private $folder = "admin.overtime.";
+
+    public function index()
+    {
+        return View($this->folder.'index',[
+            'get_data' => route($this->folder.'getData'),
+        ]);
+    }
+
+    public function getData(){
+        return View($this->folder.'content',[
+            'add_new' => route($this->folder.'create'),
+            'getDataTable' => route($this->folder.'getDataTable'),
+            'moveToTrashAllLink' => route($this->folder.'massDelete'),
+        ]);
+    }
+
+    public function getDataTable(){
+       
+        $overtimes = Overtime::where('security_number',"=",Auth::user()->security_number)->get();
+        return Datatables::of($overtimes)
+                    ->addIndexColumn()
+                    ->addColumn('employee', function($data){
+                    	return "<div class='row'><div class='col-md-3 text-center'><img src='".$data->employee->media_url['thumb']."' class='rounded-circle table-user-thumb'></div><div class='col-md-6 col-lg-6 my-auto'><b class='mb-0'>".$data->employee->first_name." ".$data->employee->last_name."</b><p class='mb-2' title='".$data->employee->employee_id."'><small><i class='ik ik-at-sign'></i>".$data->employee->employee_id."</small></p></div><div class='col-md-4 col-lg-4'><small class='text-muted float-right'></small></div></div>";
+                    })
+                    ->addColumn('details', function($data){
+                        return "<b>".$data->title."</b><p>".$data->description."</p>";
+                    })
+                    ->addColumn('hour_in', function($data){
+                        return ($data->hour);
+                        
+                    })
+                    ->addColumn('status', function($data){
+                       
+                        return ($data->status == 2 ?  'PENDING': 'APPROVED');
+                        
+                    })
+                    
+                    ->addColumn('action', function($data){
+                            $btn = "<div class='table-actions'>
+                            <a href='".route($this->folder."edit",encrypt($data->employee_id))."'><i class='ik ik-edit-2 text-dark'></i></a>
+                            <a data-href='".route($this->folder."destroy",encrypt($data->employee_id))."' class='delete cursure-pointer'><i class='ik ik-trash-2 text-danger'></i></a>
+                            </div>";
+                            return $btn;
+                    })
+                    ->rawColumns(['employee','action','details'])
+                    ->toJson();
+    }
+
+    public function create()
+    {   
+        $employees = Employee::where('security_number',"=",Auth::user()->security_number)->get();
+        return View($this->folder."create",[
+            'form_store' => route($this->folder.'store'),
+            'employees' => $employees,
+        ]);
+    }
+    
+    public function store(OvertimeRequest $request)
+    {   
+        $data = [
+            'title' => $request->title,
+            'description' => $request->description,
+            'rate_amount' => $request->rate_amount,
+            'hour' => $request->hour,
+            'date' => $request->date,
+            'employee_id' => $request->employee_id,
+            'security_number' => $request->security_number,
+        ];
+        Overtime::create($data);
+
+        return response()->json([
+            'status'=>true,
+            'message'=>'New Overtime added successfully.',
+            'redirect_to' => route($this->folder.'index')
+            ]);
+    }
+
+    public function show(Overtime $overtime){   
+        abort(404);
+    }
+
+    public function edit(Overtime $overtime,$id)
+    {
+        $overtime = Overtime::where('security_number',"=",Auth::user()->security_number)->where('employee_id',"=",decrypt($id))->firstOrFail();
+        $employees = Employee::get();
+        return View($this->folder.'edit',[
+            'overtime' => $overtime,
+            'form_update' => route($this->folder.'update',['overtime'=>$overtime]),
+            'employees' => $employees,
+            
+        ]);
+    }
+
+    public function update(OvertimeRequest $request, Overtime $overtime)
+    {
+        $data = [
+            'title' => $request->title,
+            'description' => $request->description,
+            'rate_amount' => $request->rate_amount,
+            'hour' => $request->hour,
+            'date' => $request->date,
+            'employee_id' => $request->employee_id,
+            'status' => 1,
+        ];
+        $overtime->update($data);
+
+        return response()->json([
+            'status'=>true,
+            'message'=> $overtime->title.' Approved successfully.',
+            'redirect_to' => route($this->folder.'index')
+            ]);
+    }
+
+    public function destroy(Overtime $overtime)
+    {   $Deleteovertime = Overtime::where('security_number',"=",Auth::user()->security_number)->where('employee_id',"=",decrypt($id))->firstOrFail();
+        $trash = $Deleteovertime->delete();
+        if($trash){
+            return response()->json([
+                'status' => true,
+                'message' => "Your Record has been Permanent Delete!",
+                'getDataUrl' => route($this->folder.'getData'),
+            ]);
+        }
+        return response()->json([
+            'status' => false,
+            'message' => "Something went wrong please try later!",
+            'getDataUrl' => route($this->folder.'getData'),
+        ]);
+    }
+
+    public function massDelete(Request $request){
+
+    	$trash = Overtime::where('security_number',"=",Auth::user()->security_number)->whereIn('id',$request->ids)
+                        ->delete();
+
+        if($trash){
+            return response()->json([
+                'status' => true,
+                'message' => "Your Record has been Permanent Delete!",
+                'getDataUrl' => route($this->folder.'getData'),
+            ]);
+        }
+        return response()->json([
+            'status' => false,
+            'message' => "Something went wrong please try later!",
+            'getDataUrl' => route($this->folder.'getData'),
+        ]);
+    }
+}

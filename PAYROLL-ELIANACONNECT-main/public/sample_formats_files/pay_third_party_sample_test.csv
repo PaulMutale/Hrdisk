@@ -1,0 +1,3 @@
+company_id,amount,employee_id,deduction_code,deduction_name,date,employee_name
+8502218696,1000,199929002,999,Meal Allowance,2022-12-12,John Doe
+8502218696,1000,199929002,999,Meal Allowance,2022-12-13,Mike Doe

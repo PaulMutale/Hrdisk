@@ -1,0 +1,468 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <!-- Global site tag (gtag.js) - Google Analytics -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=UA-90680653-2"></script>
+    <script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag(){dataLayer.push(arguments);}
+      gtag('js', new Date());
+
+      gtag('config', 'UA-90680653-2');
+    </script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    <!-- Twitter -->
+    <!-- <meta name="twitter:site" content="@bootstrapdash">
+    <meta name="twitter:creator" content="@bootstrapdash">
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="Azia">
+    <meta name="twitter:description" content="Responsive Bootstrap 4 Dashboard Template">
+    <meta name="twitter:image" content="https://www.bootstrapdash.com/azia/img/azia-social.png"> -->
+
+    <!-- Facebook -->
+    <!-- <meta property="og:url" content="https://www.bootstrapdash.com/azia">
+    <meta property="og:title" content="Azia">
+    <meta property="og:description" content="Responsive Bootstrap 4 Dashboard Template">
+
+    <meta property="og:image" content="https://www.bootstrapdash.com/azia/img/azia-social.png">
+    <meta property="og:image:secure_url" content="https://www.bootstrapdash.com/azia/img/azia-social.png">
+    <meta property="og:image:type" content="image/png">
+    <meta property="og:image:width" content="1200">
+    <meta property="og:image:height" content="600"> -->
+
+    <!-- Meta -->
+    <meta name="description" content="HRDISK - SUPERADMIN">
+    <meta name="author" content="HRDISK - SUPERADMIN DASHBOARD">
+
+    <title>SUPERADMIN::HRDISK</title>
+
+    <!-- vendor css -->
+    <link href="{{asset('superadmin/lib/fontawesome-free/css/all.min.css')}}" rel="stylesheet">
+    <link href="{{asset('superadmin/lib/ionicons/css/ionicons.min.css')}}" rel="stylesheet">
+    <link href="{{asset('superadmin/lib/typicons.font/typicons.css')}}" rel="stylesheet">
+    <link href="{{asset('superadmin/lib/flag-icon-css/css/flag-icon.min.css')}}" rel="stylesheet">
+
+    <!-- azia CSS -->
+    <link rel="stylesheet" href="{{asset('superadmin/css/azia.css')}}">
+
+  </head>
+  <body>
+
+    <div class="az-header">
+      <div class="container">
+        <div class="az-header-left">
+          <a href="javascript:void()" class="az-logo"><span></span> HRDSIK</a>
+          <a href="" id="azMenuShow" class="az-header-menu-icon d-lg-none"><span></span></a>
+        </div><!-- az-header-left -->
+        <div class="az-header-menu">
+          <div class="az-header-menu-header">
+            <a href="javascript:void(0)" class="az-logo"><span></span> HRDISK</a>
+            <a href="" class="close">&times;</a>
+          </div><!-- az-header-menu-header -->
+          <ul class="nav">
+            <li class="nav-item active show">
+              <a href="javascript:void(0)" class="nav-link"><i class="typcn typcn-chart-area-outline"></i> Dashboard</a>
+            </li>
+           
+            <!--start date starts here-->
+
+            <li class="nav-item">
+             
+              <form action="#" method="post">
+                <label for="startDate"> From </label>
+                
+                <select name="day1" id="day"></select>
+                <select name="month1" id="month"></select>
+                <select name="year1" id="year"></select>
+               
+                <label for="startDate"> To </label>
+                              
+                <select name="day2" id="day-end"></select>
+                <select name="month2" id="month-end"></select>
+                <select name="year2" id="year-end"></select>
+
+               
+                <button type="submit" class="btn btn success">Filter</button>
+              </form>
+             
+            </li>
+
+
+            <!--start date ends here-->
+
+
+
+            
+            
+           
+          </ul>
+        </div><!-- az-header-menu -->
+        <div class="az-header-right">
+         
+          <a href="" class="az-header-search-link"><i class="fas fa-search"></i></a>
+         
+
+
+         
+          <div class="dropdown az-profile-menu">
+            <a href="" class="az-img-user"><img src="{{asset('superadmin/img/faces/face1.jpg')}}" alt=""></a>
+            <div class="dropdown-menu">
+              <div class="az-dropdown-header d-sm-none">
+                <a href="" class="az-header-arrow"><i class="icon ion-md-arrow-back"></i></a>
+              </div>
+              <div class="az-header-profile">
+                <div class="az-img-user">
+                  <img src="{{asset('superadmin/img/faces/face1.jpg')}}" alt="">
+                </div><!-- az-img-user -->
+                <h6>Aziana Pechon</h6>
+                <span>SUPERADMIN</span>
+              </div><!-- az-header-profile -->
+
+              <a href="javascript:void(0)" class="dropdown-item"><i class="typcn typcn-user-outline"></i> My Profile</a>
+              <!--
+              <a href="" class="dropdown-item"><i class="typcn typcn-edit"></i> Edit Profile</a>
+              <a href="" class="dropdown-item"><i class="typcn typcn-time"></i> Activity Logs</a>
+              <a href="" class="dropdown-item"><i class="typcn typcn-cog-outline"></i> Account Settings</a>
+              -->
+              <a href="javascript:void(0)" class="dropdown-item"><i class="typcn typcn-power-outline"></i> Sign Out</a>
+            </div><!-- dropdown-menu -->
+          </div>
+        </div><!-- az-header-right -->
+      </div><!-- container -->
+    </div><!-- az-header -->
+
+    <div class="az-content az-content-dashboard">
+      <div class="container">
+        <div class="az-content-body">
+          <div class="az-dashboard-one-title">
+            <div>
+              <h2 class="az-dashboard-title">Hi, welcome back!</h2>
+              <p class="az-dashboard-text">Your web analytics dashboard template.</p>
+            </div>
+            <div class="az-content-header-right">
+              <div class="media">
+                <div class="media-body">
+                  <label>Start Date</label>
+                  <h6>{{date('d F-Y',strtotime($StartDate->created_at))}}</h6>
+                </div><!-- media-body -->
+              </div><!-- media -->
+              <div class="media">
+                <div class="media-body">
+                  <label>End Date</label>
+                  <h6>{{date('d F-Y',strtotime($EndDate->created_at))}}</h6>
+                </div><!-- media-body -->
+              </div><!-- media -->
+              <div class="media">
+                <div class="media-body">
+                  <label>Event Category</label>
+                  <h6>All Categories</h6>
+                </div><!-- media-body -->
+              </div><!-- media -->
+              
+            </div>
+          </div><!-- az-dashboard-one-title -->
+
+          <div class="row row-sm mg-b-20">
+            <div class="col-lg-12 ht-lg-100p">
+              <div class="card card-dashboard-one">
+                <div class="card-header">
+                  <div>
+                    <h6 class="card-title">Website Audience Metrics</h6>
+                    <p class="card-text">Web visitors analytics.</p>
+                  </div>
+                  <!--
+                  <div class="btn-group">
+                    <button class="btn active">Day</button>
+                    <button class="btn">Week</button>
+                    <button class="btn">Month</button>
+                  </div>
+                -->
+                </div><!-- card-header -->
+                <div class="card-body">
+                  <div class="card-body-top">
+                    <div>
+                      <label class="mg-b-0">Companies</label>
+                      <h2>{{$Companies->count()}}</h2>
+                    </div>
+                    <!--
+                    <div>
+                      <label class="mg-b-0">Bounce Rate</label>
+                      <h2>33.50%</h2>
+                    </div>
+                  -->
+                    <div>
+                      <label class="mg-b-0">Page Views (Landing Page)</label>
+                      <h2>{{$TrackUsers->count()}}</h2>
+                    </div>
+                    <div>
+                      <label class="mg-b-0">Payments Recieved</label>
+                      <h2>$0.00</h2>
+                    </div>
+                    
+                    
+                  </div><!-- card-body-top -->
+                  <div class="flot-chart-wrapper">
+                    <div id="flotChart" class="flot-chart">llll</div>
+                  </div><!-- flot-chart-wrapper -->
+                </div><!-- card-body -->
+              </div><!-- card -->
+            </div><!-- col -->
+            
+          </div><!-- row -->
+
+
+          <div class="row row-sm mg-b-20">
+            <div class="col-lg-12">
+              <div class="card card-dashboard-pageviews">
+                <div class="card-header">
+                  <h6 class="card-title">Contacted Support Team</h6>
+                  <p class="card-text">This report is based on 100% of registration from other countries.</p>
+                </div><!-- card-header -->
+                <div class="card-body">
+                  <div class="az-list-item">
+                    <div>
+                      @foreach($Messages as $message)
+                      <h6>{{$message->name}} - {{$message->email}}</h6>
+                      <span>{{$message->message}}</span>
+                      <small>{{date('d F-Y', strtotime($message->created_at))}}</small>
+                      @endforeach
+                    </div>
+                   
+                
+                  </div><!-- list-group-item -->
+                </div><!-- card-body -->
+              </div><!-- card -->
+
+            </div><!-- col -->
+
+
+            <div class="col-lg-12">
+              <div class="card card-dashboard-pageviews">
+                <div class="card-header">
+                  <h6 class="card-title">Contacted Support Team</h6>
+                  <p class="card-text">This report is based on 100% of registration from other countries.</p>
+                </div><!-- card-header -->
+                <div class="card-body">
+                  <div class="az-list-item">
+                    <div>
+                      @foreach($Stats_queries as $stats)
+                      <span>{{\App\Admin::where('security_number',"=",$stats->security_number)->first()->username}}</span>
+                      <span>{{\App\Admin::where('security_number',"=",$stats->security_number)->first()->email}}</span>
+                      <span>{{$stats->reasons}}</span>
+                      @endforeach
+                    </div>
+                   
+                
+                  </div><!-- list-group-item -->
+                </div><!-- card-body -->
+              </div><!-- card -->
+
+            </div><!-- col -->
+
+
+
+
+
+
+
+            </div><!-- row -->
+
+          <div class="row row-sm mg-b-20 mg-lg-b-0">
+           
+            <div class="col-lg-12 col-xl-12 mg-t-20 mg-lg-t-0">
+              <div class="card card-table-one">
+                <h6 class="card-title">What pages do your users visit</h6>
+                <p class="az-content-text mg-b-20">This is the list of users who visits on the homepage of your website.</p>
+                <div class="table-responsive">
+                  <table class="table">
+                    <thead>
+                      <tr>
+                        <th class="wd-5p">&nbsp;</th>
+                        <th class="wd-45p">Country</th>
+                        <th>Region</th>
+                        <th>IP</th>
+                       
+                      </tr>
+                    </thead>
+                    <tbody>
+                      @foreach ($TrackUsers as $tracked_users)
+                      <tr>                        
+                        <td><i class="flag-icon flag-icon-us flag-icon-squared"></i></td>
+                        <td><strong>{{$tracked_users->countryName}}</strong></td>
+                        <td><strong>{{$tracked_users->regionName}}</strong></td>
+                        <td><strong>{{$tracked_users->ip}}</strong></td>                      
+                      </tr>
+                      @endforeach
+                      
+                    </tbody>
+                  </table>
+                </div><!-- table-responsive -->
+              </div><!-- card -->
+            </div><!-- col-lg -->
+
+          </div><!-- row -->
+        </div><!-- az-content-body -->
+      </div>
+    </div><!-- az-content -->
+
+    <div class="az-footer ht-40">
+      <div class="container ht-100p pd-t-0-f">
+        <span class="text-muted d-block text-center text-sm-left d-sm-inline-block">Copyright © elianaconnect.com 2020</span>
+        <span class="float-none float-sm-right d-block mt-1 mt-sm-0 text-center"> Free <a href="https://www.elianaconnect.com" target="_blank">E-SYSTEMS</a> from Elianaconnect</span>
+      </div><!-- container -->
+    </div><!-- az-footer -->
+
+
+    <script src="{{asset('superadmin/lib/jquery/jquery.min.js')}}"></script>
+    <script src="{{asset('superadmin/lib/bootstrap/js/bootstrap.bundle.min.js')}}"></script>
+    <script src="{{asset('superadmin/lib/ionicons/ionicons.js')}}"></script>
+    <script src="{{asset('superadmin/lib/jquery.flot/jquery.flot.js')}}"></script>
+    <script src="{{asset('superadmin/lib/jquery.flot/jquery.flot.resize.js')}}"></script>
+    <script src="{{asset('superadmin/lib/chart.js/Chart.bundle.min.js')}}"></script>
+    <script src="{{asset('superadmin/lib/peity/jquery.peity.min.js')}}"></script>
+
+    <script src="{{asset('superadmin/js/azia.js')}}"></script>
+    <script src="{{asset('superadmin/js/chart.flot.sampledata.js')}}"></script>
+    <script src="{{asset('superadmin/js/dashboard.sampledata.js')}}"></script>
+    <script src="{{asset('superadmin/js/jquery.cookie.js')}}" type="text/javascript"></script>
+
+
+
+
+
+
+<!--Date Time Filter-->
+<script>   
+
+$(document).ready(function() {
+  const monthNames = ["January", "February", "March", "April", "May", "June",
+    "July", "August", "September", "October", "November", "December"
+  ];
+  let qntYears = 4;
+  let selectYear = $("#year");
+  let selectMonth = $("#month");
+  let selectDay = $("#day");
+  let currentYear = new Date().getFullYear();
+
+  for (var y = 0; y < qntYears; y++) {
+    let date = new Date(currentYear);
+    let yearElem = document.createElement("option");
+    yearElem.value = currentYear
+    yearElem.textContent = currentYear;
+    selectYear.append(yearElem);
+    currentYear--;
+  }
+
+  for (var m = 0; m < 12; m++) {
+    let month = monthNames[m];
+    let monthElem = document.createElement("option");
+    monthElem.value = m;
+    monthElem.textContent = month;
+    selectMonth.append(monthElem);
+  }
+
+  var d = new Date();
+  var month = d.getMonth();
+  var year = d.getFullYear();
+  var day = d.getDate();
+
+  selectYear.val(year);
+  selectYear.on("change", AdjustDays);
+  selectMonth.val(month);
+  selectMonth.on("change", AdjustDays);
+
+  AdjustDays();
+  selectDay.val(day)
+
+  function AdjustDays() {
+    var year = selectYear.val();
+    var month = parseInt(selectMonth.val()) + 1;
+    selectDay.empty();
+
+    //get the last day, so the number of days in that month
+    var days = new Date(year, month, 0).getDate();
+
+    //lets create the days of that month
+    for (var d = 1; d <= days; d++) {
+      var dayElem = document.createElement("option");
+      dayElem.value = d;
+      dayElem.textContent = d;
+      selectDay.append(dayElem);
+    }
+  }
+});
+</script>
+<!--End Date Time Filter-->
+
+
+
+
+<!--Date Time Filter-->
+<script>   
+
+  $(document).ready(function() {
+    const monthNames = ["January", "February", "March", "April", "May", "June",
+      "July", "August", "September", "October", "November", "December"
+    ];
+    let qntYears = 4;
+    let selectYear = $("#year-end");
+    let selectMonth = $("#month-end");
+    let selectDay = $("#day-end");
+    let currentYear = new Date().getFullYear();
+  
+    for (var y = 0; y < qntYears; y++) {
+      let date = new Date(currentYear);
+      let yearElem = document.createElement("option");
+      yearElem.value = currentYear
+      yearElem.textContent = currentYear;
+      selectYear.append(yearElem);
+      currentYear--;
+    }
+  
+    for (var m = 0; m < 12; m++) {
+      let month = monthNames[m];
+      let monthElem = document.createElement("option");
+      monthElem.value = m;
+      monthElem.textContent = month;
+      selectMonth.append(monthElem);
+    }
+  
+    var d = new Date();
+    var month = d.getMonth();
+    var year = d.getFullYear();
+    var day = d.getDate();
+  
+    selectYear.val(year);
+    selectYear.on("change", AdjustDays);
+    selectMonth.val(month);
+    selectMonth.on("change", AdjustDays);
+  
+    AdjustDays();
+    selectDay.val(day)
+  
+    function AdjustDays() {
+      var year = selectYear.val();
+      var month = parseInt(selectMonth.val()) + 1;
+      selectDay.empty();
+  
+      //get the last day, so the number of days in that month
+      var days = new Date(year, month, 0).getDate();
+  
+      //lets create the days of that month
+      for (var d = 1; d <= days; d++) {
+        var dayElem = document.createElement("option");
+        dayElem.value = d;
+        dayElem.textContent = d;
+        selectDay.append(dayElem);
+      }
+    }
+  });
+  </script>
+  <!--End Date Time Filter-->
+
+  </body>
+</html>

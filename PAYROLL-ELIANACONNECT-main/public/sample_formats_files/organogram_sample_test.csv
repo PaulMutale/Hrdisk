@@ -1,0 +1,6 @@
+company_id,title,salary_scale,vacancies,head_count,housing_allowance,transport_allowance
+1886333,CEO,10000,1,0,100,1000
+1886333,COO,7500,4,0,500,500
+1886333,DLO,5000,4,0,1000,1000
+1886333,DEV,6000,2,0,1000,1
+1886333,ACCOUNTANT,5000,3,0,12,12
